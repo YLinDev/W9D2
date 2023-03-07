@@ -41,15 +41,16 @@ class View {
       el.style.float = "left";
       el.style.border = "2px solid black";
       el.style.cursor = "pointer";
-      // el.style.hover = "background-color yellow";
-      // document.styleSheets[0].insertRule("#li:hover {color:yellow}")
+      
     })
+    ul.addEventListener("click", this.handleClick.bind(this))
     ul.addEventListener("mouseover", (e) => {
       if (e.target.tagName == "LI"){
         e.target.style.backgroundColor = "yellow"
-      } else {
-        e.target.style.backgroundColor = "#69f420"
-      }
+       }
+      // else {
+      //   e.target.style.backgroundColor = "#69f420"
+      // }
     })
     ul.addEventListener("mouseout", (e) => {
       if (e.target.tagName == "LI"){
@@ -63,10 +64,13 @@ class View {
   }
 
   handleClick(e) {
+    // debugger
+    console.log(this);
     const block = e.target
     const pos = parseInt([block.dataset.row, block.dataset.col]);
+    console.log(e)
     // const col = parseInt(block.dataset.col);
-    this.playMove(pos);
+    this.game.playMove(pos);
   }
 
   makeMove(square) {}
