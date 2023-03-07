@@ -15,7 +15,7 @@
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const View = __webpack_require__(/*! ./ttt-view.js */ \"./src/ttt-view.js\")\nconst Game = __webpack_require__(/*! ../ttt_node/game.js */ \"./ttt_node/game.js\")\n\n\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n  // Your code here\n});\n\n\n//# sourceURL=webpack://tic_tac_toe/./src/index.js?");
+eval("const View = __webpack_require__(/*! ./ttt-view.js */ \"./src/ttt-view.js\")\nconst Game = __webpack_require__(/*! ../ttt_node/game.js */ \"./ttt_node/game.js\")\n\n\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n  \n  const game = new Game();\n  let figure = document.querySelector(\".ttt\");\n  const view = new View(game, figure);\n  \n});\n\n\n//# sourceURL=webpack://tic_tac_toe/./src/index.js?");
 
 /***/ }),
 
@@ -25,7 +25,7 @@ eval("const View = __webpack_require__(/*! ./ttt-view.js */ \"./src/ttt-view.js\
   \*************************/
 /***/ ((module) => {
 
-eval("\n\nclass View {\n  constructor(game, el) {}\n\n  setupBoard() {}\n  \n  bindEvents() {}\n\n  handleClick(e) {}\n\n  makeMove(square) {}\n\n}\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack://tic_tac_toe/./src/ttt-view.js?");
+eval("\n\nclass View {\n  constructor(game, el) {\n    this.game = game;\n    this.el = el;\n    this.setupBoard(el);\n  }\n\n  setupBoard(el) {\n  \n    // const board = this.board;\n    const ul = document.createElement(\"ul\");\n    ul.style.listStyle = \"none\";\n    ul.style.display = \"block\";\n    // ul.style.marginBlockStart = \"1em\";\n    // ul.style.marginBlockEnd = \"1em\";\n    // ul.style.inlineStart = \"0px\";\n    // ul.style.inlineEnd = \"0px\";\n    // ul.style.paddingInlineStart = \"40px\";\n    ul.style.margin = \"30px auto\";\n    ul.style.width = \"300px\";\n    // ul.style.border = \"5px solid black\";\n\n    \n    for (let rowIdx = 0; rowIdx < 3; rowIdx++) {\n      for (let colIdx = 0; colIdx < 3; colIdx++) {\n        const li = document.createElement(\"li\");\n        li.dataset.x = colIdx;\n        li.dataset.y = rowIdx;\n        ul.appendChild(li);\n      }\n    }\n    el.appendChild(ul);\n    const li = document.querySelectorAll(\"li\");\n    li.forEach(el =>{\n      el.style.display = \"list-item\";\n      el.style.width = \"90px\";\n      el.style.height = \"90px\";\n      el.style.background = \"gray\";\n      el.style.float = \"left\";\n      el.style.border = \"2px solid black\";\n    })\n\n  }\n  \n  bindEvents() {}\n\n  handleClick(e) {}\n\n  makeMove(square) {}\n\n}\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack://tic_tac_toe/./src/ttt-view.js?");
 
 /***/ }),
 
