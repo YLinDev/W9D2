@@ -26,8 +26,8 @@ class View {
     for (let rowIdx = 0; rowIdx < 3; rowIdx++) {
       for (let colIdx = 0; colIdx < 3; colIdx++) {
         const li = document.createElement("li");
-        li.dataset.x = colIdx;
-        li.dataset.y = rowIdx;
+        li.dataset.pos = [colIdx, rowIdx];
+        // li.dataset.y = rowIdx;
         ul.appendChild(li);
       }
     }
@@ -37,16 +37,37 @@ class View {
       el.style.display = "list-item";
       el.style.width = "90px";
       el.style.height = "90px";
-      el.style.background = "gray";
+      el.style.background = "#69f420";
       el.style.float = "left";
       el.style.border = "2px solid black";
+      el.style.cursor = "pointer";
+      // el.style.hover = "background-color yellow";
+      // document.styleSheets[0].insertRule("#li:hover {color:yellow}")
     })
-
+    ul.addEventListener("mouseover", (e) => {
+      if (e.target.tagName == "LI"){
+        e.target.style.backgroundColor = "yellow"
+      } else {
+        e.target.style.backgroundColor = "#69f420"
+      }
+    })
+    ul.addEventListener("mouseout", (e) => {
+      if (e.target.tagName == "LI"){
+        e.target.style.backgroundColor = "#69f420"
+      } 
+    })
   }
   
-  bindEvents() {}
+  bindEvents() {
 
-  handleClick(e) {}
+  }
+
+  handleClick(e) {
+    const block = e.target
+    const pos = parseInt([block.dataset.row, block.dataset.col]);
+    // const col = parseInt(block.dataset.col);
+    this.playMove(pos);
+  }
 
   makeMove(square) {}
 
